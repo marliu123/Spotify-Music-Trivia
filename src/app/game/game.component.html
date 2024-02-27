@@ -1,0 +1,51 @@
+<div
+  class="game-page"
+  [ngClass]="{
+    'dark-theme': selectedTheme === 'Dark',
+    'light-theme': selectedTheme === 'Light',
+    'text-white': selectedTheme === 'Dark',
+    'text-black': selectedTheme === 'Light'
+  }"
+>
+  <div class="quit-button-container">
+    <a
+      routerLink="/"
+      [queryParams]="{ theme: selectedTheme, mode: selectedMode }"
+      >Quit</a
+    >
+  </div>
+  <div class="timer">{{ timer | date : "mm:ss:SSS" }}</div>
+
+  <div style="display: contents">
+    <button class="circular-button" (click)="togglePlayPause()">
+      {{ isPlaying ? "Pause" : "Play" }}
+    </button>
+    <h2>Question {{ questionCounter }}</h2>
+  </div>
+
+  <div *ngIf="choices.length > 0">
+    <div class="game-container">
+      <div class="choices-container">
+        <button
+          *ngFor="let choice of choices"
+          (click)="selectChoice(choice)"
+          class="choices-button"
+          [ngClass]="{
+            'correct-answer': answered && choice.name === correctChoice.name,
+            'wrong-answer': answered && choice.name !== correctChoice.name
+          }"
+        >
+          {{ choice.name }}
+        </button>
+      </div>
+      <button class="next-question" *ngIf="answered" (click)="nextQuestion()">
+        Next Question
+      </button>
+    </div>
+  </div>
+  <app-final-score
+    *ngIf="questionCounter === 11"
+    [formattedTimer]="formattedTimer"
+    [counter]="counter"
+  ></app-final-score>
+</div>

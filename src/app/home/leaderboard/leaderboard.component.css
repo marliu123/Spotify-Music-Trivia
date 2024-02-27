@@ -1,0 +1,74 @@
+.leaderboard-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  transition: background-color 0.3s ease; 
+}
+
+h1 {
+  font-size: 48px;
+  color: #1db954; 
+  margin-bottom: 20px;
+}
+
+table {
+  background-color: black; 
+  color: white;
+  text-align: center;
+  width: 90%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease; 
+}
+
+th,
+td {
+  padding: 15px;
+  border: 1px solid #535353; 
+}
+
+th {
+  background-color: #535353; 
+  color: white;
+  font-weight: bold;
+}
+
+.home-button-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  z-index: 999;
+  background-color: #1db954; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+
+.home-button-container:hover {
+  background-color: #1ed760; 
+}
+
+.dark-theme {
+  background-color: black; 
+}
+
+.dark-theme:hover,
+.text-white:hover {
+  background-color: black; 
+}
+
+.light-theme {
+  background-color: #fff; 
+}
+
+.light-theme:hover,
+.text-black:hover {
+  background-color: #f2f2f2; 
+}

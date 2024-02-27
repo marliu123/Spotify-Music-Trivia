@@ -1,0 +1,63 @@
+.score-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #191414; 
+  color: #1db954; 
+}
+.dark-theme {
+  background-color: black;
+}
+
+.text-white {
+  color: white;
+}
+
+.light-theme {
+  background-color: white;
+}
+
+.text-black {
+  color: black;
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 30%;
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  background-color: #282828; /* Dark background similar to Spotify */
+  color: white;
+  border: 1px solid #1db954; /* Border color similar to Spotify */
+  border-radius: 5px;
+}
+
+.submit {
+  padding: 15px 25px;
+  margin-top: 30px;
+  font-size: 1.2em;
+  background-color: #1db954; /* Spotify green color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit:hover {
+  background-color: #1ed760; /* Hover background color */
+}

@@ -1,0 +1,26 @@
+<div
+  class="score-container"
+  [ngClass]="{
+    'dark-theme': selectedTheme === 'Dark',
+    'light-theme': selectedTheme === 'Light',
+    'text-white': selectedTheme === 'Dark',
+    'text-black': selectedTheme === 'Light'
+  }"
+>
+  <h1>Game Over!</h1>
+  <p>Your time: {{ formattedTimer }}</p>
+  <p>Correct Answers: {{ counter }}</p>
+  <p>Please enter your name below!</p>
+  <input
+    type="text"
+    style="text-align: center; background-color: #1db954"
+    [(ngModel)]="playerName"
+  />
+  <button
+    class = "submit"
+    style="margin: 15px; cursor: pointer"
+    (click)="submitScore(selectedTheme, selectedMode)"
+  >
+    Submit
+  </button>
+</div>

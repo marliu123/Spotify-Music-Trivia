@@ -1,0 +1,52 @@
+<div
+  class="leaderboard-page"
+  [ngClass]="{
+    'dark-theme': selectedTheme === 'Dark',
+    'light-theme': selectedTheme === 'Light',
+    'text-white': selectedTheme === 'Dark',
+    'text-black': selectedTheme === 'Light'
+  }"
+>
+  <div
+    class="home-button-container"
+    (click)="goHome(selectedTheme, selectedMode)"
+  >
+    Home
+  </div>
+  <h1>
+    {{ selectedMode === "Hardcore" ? "Hardcore Leaderboard" : "Leaderboard" }}
+  </h1>
+  <table *ngIf="selectedMode === 'Classic'">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Score</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of classicPlayers">
+        <td>{{ player.name }}</td>
+        <td>{{ player.score }}</td>
+        <td>{{ player.time }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table *ngIf="selectedMode === 'Hardcore'">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Score</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of hardcorePlayers">
+        <td>{{ player.name }}</td>
+        <td>{{ player.score }}</td>
+        <td>{{ player.time }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,103 @@
+<div *ngIf="authLoading || configLoading">Loading...</div>
+<audio id="popSound" src="assets/audio/beep.wav" style="display: none"></audio>
+
+<div
+  class="landing-page"
+  [ngClass]="{
+    'dark-theme': selectedTheme === 'Dark',
+    'light-theme': selectedTheme === 'Light',
+    'text-white': selectedTheme === 'Dark',
+    'text-black': selectedTheme === 'Light'
+  }"
+>
+  <div class="options-button-container">
+    <button class="options-button" (click)="toggleOptions()">Options</button>
+
+    <div class="dropdown-section genre-container">
+      <div
+        class="options"
+        *ngIf="!authLoading && !configLoading && showOptions"
+      >
+        <div class="dropdown-section">
+          Genre:
+          <select
+            [(ngModel)]="selectedGenre"
+            (ngModelChange)="setGenre($event)"
+            [ngClass]="{ 'dropbox-dropdown': selectedTheme === 'Dark' }"
+          >
+            <option [value]="genre" *ngFor="let genre of genres">
+              {{ genre }}
+            </option>
+          </select>
+        </div>
+        <div class="dropdown-section">
+          Theme:
+          <select
+            [(ngModel)]="selectedTheme"
+            (ngModelChange)="setTheme($event)"
+            [ngClass]="{ 'dropbox-dropdown': selectedTheme === 'Dark' }"
+          >
+            <option [value]="theme" *ngFor="let theme of themes">
+              {{ theme }}
+            </option>
+          </select>
+        </div>
+        <div class="dropdown-section">
+          Sound Effects:
+          <input
+            type="checkbox"
+            [(ngModel)]="soundEffectsEnabled"
+            (change)="playSoundEffect()"
+          />
+        </div>
+        <div class="dropdown-section">
+          Mode:
+          <select
+            [(ngModel)]="selectedMode"
+            (ngModelChange)="setMode($event)"
+            [ngClass]="{ 'dropbox-dropdown': selectedTheme === 'Dark' }"
+          >
+            <option [value]="mode" *ngFor="let mode of modes">
+              {{ mode }}
+            </option>
+          </select>
+        </div>
+        <div class="dropdown-section">
+          Revert Settings?
+          <button class="revert-button" (click)="revertSettings()">Revert</button>
+        </div>
+        <div class="dropdown-section">
+          <a
+            class="leaderboard"
+            routerLink="/leaderboard"
+            [queryParams]="{ theme: selectedTheme, mode: selectedMode }"
+            >Leaderboard</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="home-container"
+    [ngClass]="{
+      'dark-theme': selectedTheme === 'Dark',
+      'light-theme': selectedTheme === 'Light'
+    }"
+  >
+    <h1>MUSIC GUESSING GAME</h1>
+    <p
+      [ngClass]="{
+        'text-white': selectedTheme === 'Dark',
+        'text-black': selectedTheme === 'Light'
+      }"
+    >
+      READY TO PLAY?
+    </p>
+    <a
+      class="start-button"
+      routerLink="/game"
+      [queryParams]="{ theme: selectedTheme, mode: selectedMode }"
+      >Start</a
+    >
+  </div>
+</div>
